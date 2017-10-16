@@ -11,29 +11,29 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('build-dev', function (callback) {
-  $.runSequence('copy-dev', 'copy-config', [
-    'copy-dev-libs',
+  $.runSequence('copy-config', [
+    'copy-lib',
     'copy-img',
-    'copy-handLibs',
     'html',
-    'copy-configxml',
-    'resource'],'inject',  callback);
+    // 'copy-configxml',
+    // 'resource'
+    ],'inject',  callback);
 });
 
 gulp.task('build-prod', function (callback) {
-  $.runSequence('copy-prod', [
-    'copy-prod-libs',
+  $.runSequence('copy-config-prod', [
+    'copy-lib',
     'copy-img',
     'sass',
     'scripts',
     'html',
-    'copy-config-prod',
-    'copy-configxml-prod',
-    'resourceProd'], callback);
+    // 'copy-configxml-prod',
+    // 'resourceProd'
+    ], callback);
 });
 
 // Default Task
-gulp.task('default', ['run-dev']);
+gulp.task('run', ['run-dev']);
 
 // Default Task
 gulp.task('run-dev', function (callback) {

@@ -41,7 +41,7 @@ function isOnlyChange(event) {
 
 // Clean Task
 gulp.task('clean', function () {
-  $.del(['www/build/*', 'app/scripts/baseConfig.js', 'www/index.html']);
+  $.del(['www/build/*', 'app/scripts/baseConfig.js']);
 });
 
 // Watch Files For Changes
