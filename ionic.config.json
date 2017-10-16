@@ -1,0 +1,10 @@
+{
+  "name": "ZMJJ",
+  "app_id": "com.hand.zmjj.pad.dev",
+  "type": "ionic1",
+  "watchPatterns": [],
+  "integrations": {
+    "gulp": {},
+    "cordova": {}
+  }
+}

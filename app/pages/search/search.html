@@ -1,0 +1,44 @@
+<ion-view>
+  <ion-header-bar style="background: rgba(250,250,250,0.90);box-shadow: 0 0 0 0 #E3E3E3;">
+    <a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="$ionicGoBack()" ></a>
+    <h1 class="title">搜索</h1>
+  </ion-header-bar>
+  <ion-content style="background: #FAFAFA 90%">
+    <div class="search-content">
+      <div class="search-inp">
+        <lable class="start-time time">
+          <span class="input-title">开始时间</span>
+          <ionic-datepicker date="startDate" callback="datePickerCallback">
+            <i class="icon ion-date fl date"></i>
+          </ionic-datepicker>
+          <input type="text" placeholder="请输入开始时间" class="fl inp" ng-model="search.startDate" date-format >
+        </lable>
+        <lable class="end-time time">
+          <span class="input-title">结束时间</span>
+          <ionic-datepicker date="endDate" callback="datePickerCallback">
+            <i class="icon ion-date fl date"></i>
+          </ionic-datepicker>
+          <input type="text" placeholder="请输入结束时间" class="fl inp" ng-model="search.endDate"  date-format >
+        </lable>
+        <lable class="time order">
+          <span class="input-title">工单号</span>
+          <input type="text" placeholder="请填写工单号" class="fl inp" ng-model="search.orderNum">
+        </lable>
+        <lable class="time order">
+          <span class="input-title">项目名称</span>
+          <input type="text" placeholder="请填写项目名称" class="fl inp" ng-model="search.orderName">
+        </lable>
+        <lable class="time order">
+          <span class="input-title">产品编码</span>
+          <input type="text" placeholder="请填写产品编码" class="fl inp" ng-model="search.orderCode">
+        </lable>
+
+      </div>
+      <div class="btn-search" ng-click="searchBtn()">
+        <img src="build/img/search.png" alt="">
+        <span class="fl">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

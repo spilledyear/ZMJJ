@@ -1,0 +1,21 @@
+{
+  "@platforms": [
+    "android",
+    "iPhone",
+    "iPad"
+  ],
+  "name": "筑美家居",   /*应用名称，程序桌面图标名称*/
+  "short_name": "ZMJJ",
+  "version": {
+    "name": "1.1.0",    /*应用版本名称*/
+    "code": ""
+  },
+  "start_url": "www/index.html",
+  "launch_path": "www/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }]
+}

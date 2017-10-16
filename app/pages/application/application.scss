@@ -1,0 +1,23 @@
+.coutent-function{
+  margin-left: .2rem;
+  margin-top: -.1rem;
+}
+.daily-work{
+  margin-top: 10px;
+  width: .63rem;
+  height: .25rem;
+  background-image: linear-gradient(-135deg, #DEAE59 0%, #F3D47B 100%);
+  box-shadow: 0 2px 2px 0 rgba(234,234,234,0.50);
+  border-radius: 3px;
+  font-size: 20px;
+  line-height: .25rem;
+  color: #fff;
+  img{
+    margin-left: .04rem;
+    margin-top: .06rem;
+    margin-right: .08rem;
+    width: .14rem;
+    height: .14rem;
+    float: left;
+  }
+}

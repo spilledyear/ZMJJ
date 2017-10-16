@@ -1,0 +1,18 @@
+<ion-side-menus>
+  <ion-side-menu-content>
+    <ion-nav-view name="content"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left" width="294" >
+    <div class="left-title">
+      <div class="title-logo"><img src="build/img/logo.png" alt=""></div>
+    </div>
+    <div class="left-list">
+      <div class="left-item application" ui-sref="menu.application" menu-close="true">
+        应用中心
+      </div>
+      <div class="left-item main"  nav-transition="none" ng-click="goMineCenter()" menu-close="true" >
+        个人中心
+      </div>
+    </div>
+  </ion-side-menu>
+</ion-side-menus>

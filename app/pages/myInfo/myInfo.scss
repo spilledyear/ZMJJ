@@ -1,0 +1,40 @@
+.main-logo{
+  width: 100%;
+  top: 45px;
+  .logo-img{
+    width: .65rem;
+    height: .65rem;
+    margin: .3rem auto;
+    img{
+      width: 100%;
+    }
+  }
+}
+
+.main-all>div{
+  width: 50%;
+  height: .21rem;
+  margin: 40px auto;
+  background: #FFFFFF;
+  box-shadow: 0 2px 2px 0 rgba(234,234,234,0.50);
+}
+.version{
+  text-indent: 30px;
+  font-size: 20px;
+  color: #030303;
+  letter-spacing: 0;
+  line-height: .21rem;
+
+    .version-num{
+      float: right;
+      margin-right: 15px;
+    }
+}
+
+.exitLogin{
+  text-indent: 30px;
+  font-size: 20px;
+  color: #030303;
+  letter-spacing: 0;
+  line-height: .21rem;
+}

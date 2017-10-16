@@ -1,0 +1,294 @@
+<ion-view cache-view="false">
+	<ion-header-bar style="background: rgba(250,250,250,0.90);box-shadow: 0 0 0 0 #E3E3E3;">
+		<a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="$ionicGoBack()"></a>
+		<h1 class="title">报工</h1>
+		<div class="submit" ng-click="orderSubmit(0)" ng-show='activeTab=="cargo"'>
+			提交
+		</div>
+		<div class="submit" ng-click="orderSubmit(1)" ng-show='activeTab=="other"'>
+			提交
+		</div>
+		<div class="submit" ng-click="orderSubmit(2)" ng-show='activeTab=="rework"'>
+			提交
+		</div>
+	</ion-header-bar>
+	<div class="daily-main">
+		<ul class="daily-nav" ng-init='activeTab="cargo"'>
+			<li ng-class='{active:activeTab=="cargo"}' ng-click='activeTab="cargo"'><span style="display: inline-block;width: 100%;" ng-click="cargoLoading()">报工(货量)</span>
+				<div class="border-bottom" ng-show='activeTab=="cargo"'></div>
+			</li>
+			<li ng-class='{active:activeTab=="other" }' ng-click='activeTab="other"'><span style="display: inline-block;width: 100%;" ng-click="otherLoading()">报工(其他)</span>
+				<div class="border-bottom" ng-show='activeTab=="other"'></div>
+			</li>
+			<li ng-class='{active:activeTab=="rework"}' ng-click='activeTab="rework"'><span ng-click="reWork()" style="display: inline-block;width: 100%;">返工</span>
+				<div class="border-bottom" ng-show='activeTab=="rework"'></div>
+			</li>
+		</ul>
+		<div class="daily-content">
+			<ion-content delegate-handle="myscroll" overflow-scroll="true">
+				<!--报工货量页面-->
+				<div class="daily-order cargo ion-scroll" ng-show='activeTab=="cargo"' style="background: #FAFAFA">
+					<!--搜索-->
+					<div class="search">
+						<div class="search-left" data-tap-disabled="true">
+							<select ng-model="cargoSort">
+								<option value="">请选择排序方式</option>
+								<option value="demandDate" selected="selected">按计划完成时间排序</option>
+								<option value="customerName">按项目名称排序</option>
+								<option value="makeOrderNum">按工单号排序</option>
+							</select>
+						</div>
+						<div class="search-center">
+							<div class="search-order" ng-click="goSearch('0')"><input type="text" placeholder="          搜索工单"></div>
+						</div>
+						<div class="search-right">
+							<div>当前工序：{{curentOpeartion}}</div>
+						</div>
+					</div>
+					<!--工单-->
+					<div ng-repeat="orderCargo in orderCargos | orderBy:cargoSort">
+						<div style="margin-bottom: 15px;background:#fff" class="orderList">
+							<div>
+								<div class="checkimg orderId">
+									<img src="build/img/no.png" alt="" ng-hide="checkimg">
+									<img src="build/img/yes.png" alt="" ng-show="checkimg">
+									<input type="checkbox" ng-model="checkimg" class="check" data-orderid="{{orderCargo.makeOrderId}}" />
+									<!-- ng-click="orderList($event,orderCargo.makeOrderId)"-->
+								</div>
+								<div style="overflow: hidden;height: .336rem;" ng-click="partsshow($index, parts[$index],orderCargo.makeOrderId)">
+									<div class="order-coding fl">
+										<div class="code" style="text-align: left;" on-hold="thatContent($event,orderCargo.itemCode)">{{orderCargo.itemCode}}</div>
+										<div style="text-align: left;margin-left: 35px;" on-hold="thatContent($event,orderCargo.makeOrderNum)">{{orderCargo.makeOrderNum}}</div>
+									</div>
+
+									<div class="order-name fl">
+										<div on-hold="thatContent($event,orderCargo.descriptions)">{{orderCargo.descriptions}}</div>
+										<div>{{orderCargo.customerName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{orderCargo.specification}}</div>
+									</div>
+									<div class="order-model fl">
+										<div>{{orderCargo.demandDate | limitTo:10}}</div>
+										<div>{{orderCargo.material}}</div>
+									</div>
+									<div class="order-num fl">
+										<div style="width: 90%" class="completeQty">{{orderCargo.moQty}}</div>
+										<div class="orderNum"><input type="text" value="{{orderCargo.completeQty}}" ng-click="relclick($event)"></div>
+									</div>
+								</div>
+							</div>
+							<!--部件-->
+							<div style="overflow: hidden" ng-show="parts[$index]">
+								<div style="width:96%;height: 1px;background: #DADADA 100%;margin: 0 auto; "></div>
+								<div ng-repeat="item in items[$index]" ng-click="selectPart($index)">
+									<div class="order-coding fl " style="text-align: left;">
+										<div class="order-input partId">
+											<img src="build/img/no.png" alt="" ng-hide="check1">
+											<img src="build/img/yes.png" alt="" ng-show="check1">
+											<input type="checkbox" ng-model="check1" class="check" data-orderid="{{item.makeOrderId}}" data-partid="{{item.assemblyId}}"> {{item.assemblyItemDesc}}
+										</div>
+									</div>
+									<div class="order-name fl" style="width: 30%;">
+										<div>{{item.material}}</div>
+									</div>
+									<div class="order-model fl" style="width: 30%;">
+										<div>{{item.specification}}</div>
+									</div>
+									<div class="order-num fl" style="width: 15%;">
+										<div style="margin-top: 8px;width: 70%;" class="partNum"><input type="text" value="{{item.completeQty}}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--上拉加载-->
+					<ion-infinite-scroll ng-if="hasmoreCargo" on-infinite="loadCargoList()" distance="1%" immediate-check="false"></ion-infinite-scroll>
+				</div>
+				<!--报工其他页面-->
+				<div ng-show='activeTab=="other"' class="daily-order cargo" style="background-color: #FAFAFA">
+					<!--报工其他搜索-->
+					<div class="search">
+						<div class="search-left" data-tap-disabled="true">
+							<select ng-model="otherSort">
+								<option value="">请选择排序方式</option>
+								<option value="demandDate" selected="selected">按计划完成时间排序</option>
+								<option value="customerName">按项目名称排序</option>
+								<option value="makeOrderNum">按工单号排序</option>
+							</select>
+						</div>
+						<div class="search-center" >
+							<div class="search-order" ng-click="goSearch(1)"><input type="text" placeholder="          搜索工单"></div>
+						</div>
+						<div class="search-right">
+							<div>当前工序：{{curentOpeartion}}</div>
+						</div>
+					</div>
+					<!--报工其他工单-->
+					<div ng-repeat="orderOther in orderOthers | orderBy:otherSort">
+						<div style="margin-bottom: 15px;background:#fff" class="orderList">
+							<div>
+								<div class="checkimg otherId">
+									<img src="build/img/no.png" alt="" ng-hide="checkimg">
+									<img src="build/img/yes.png" alt="" ng-show="checkimg">
+									<input type="checkbox" ng-model="checkimg" class="check" data-orderid="{{orderOther.makeOrderId}}" />
+								</div>
+								<div style="overflow: hidden;height: .336rem;" ng-click="partsshow($index, parts[$index],orderOther.makeOrderId)">
+									<div class="order-coding fl">
+										<div class="code" style="text-align: left;" on-hold="thatContent($event,orderOther.itemCode)">{{orderOther.itemCode}}</div>
+										<div style="text-align: left;margin-left: 35px;" on-hold="thatContent($event,orderOther.makeOrderNum)">{{orderOther.makeOrderNum}}</div>
+									</div>
+									<div class="order-name fl">
+										<div on-hold="thatContent($event,orderOther.descriptions)">{{orderOther.descriptions}}</div>
+										<div>{{orderOther.customerName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{orderOther.specification}} </div>
+									</div>
+									<div class="order-model fl">
+										<div>{{orderOther.demandDate | limitTo:10}}</div>
+										<div>{{orderOther.material}}</div>
+									</div>
+									<div class="order-num fl">
+										<div style="width: 90%" class="completeQty">{{orderOther.moQty}}</div>
+										<div class="otherNum"><input type="text" value="{{orderOther.completeQty}}"></div>
+									</div>
+								</div>
+							</div>
+							<!--部件-->
+							<div style="overflow: hidden" ng-show="parts[$index]">
+								<div style="width:96%;height: 1px;background: #DADADA 100%;margin: 0 auto; "></div>
+								<div ng-repeat="item in items[$index]">
+									<div class="order-coding fl" >
+										<div class="order-input otherPartId">
+											<img src="build/img/no.png" alt="" ng-hide="check1">
+											<img src="build/img/yes.png" alt="" ng-show="check1">
+											<input type="checkbox" ng-model="check1" class="check" data-orderid="{{item.makeOrderId}}" data-partid="{{item.assemblyId}}"> {{item.assemblyItemDesc}}
+										</div>
+									</div>
+									<div class="order-name fl" style="width: 30%;">
+										<div>{{item.material}}</div>
+									</div>
+									<div class="order-model fl" style="width: 30%;">
+										<div>{{item.specification}}</div>
+									</div>
+									<div class="order-num fl" style="width: 15%;">
+										<div style="margin-top: 8px;width: 70%;" class="otherPartNum" ><input type="text" value="{{item.completeQty}}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ion-infinite-scroll ng-if="hasmoreOther" on-infinite="loadOtherList()" distance="1%" immediate-check="false"></ion-infinite-scroll>
+				</div>
+				<!--返工页面-->
+				<div ng-show='activeTab=="rework"' class="daily-order cargo" style="background-color: #FAFAFA">
+					<!--搜索-->
+					<div class="search">
+						<div class="search-left" data-tap-disabled="true">
+							<select ng-model="reworkSort">
+								<option value="">请选择排序方式</option>
+								<option value="demandDate" selected="selected">按计划完成时间排序</option>
+								<option value="customerName">按项目名称排序</option>
+								<option value="makeOrderNum">按工单号排序</option>
+							</select>
+						</div>
+						<div class="search-center">
+							<div class="search-order" ng-click="goSearch(2)"><input type="text" placeholder="          搜索工单"></div>
+						</div>
+						<div class="search-right">
+							<div>当前工序：{{curentOpeartion}}</div>
+						</div>
+					</div>
+					<!--工单-->
+					<div ng-repeat="rework in reworks | orderBy:reworkSort">
+						<div style="margin-bottom: 15px;background:#fff" class="orderList">
+							<div>
+								<div class="checkimg reworkId">
+									<img src="build/img/no.png" alt="" ng-hide="checkimg">
+									<img src="build/img/yes.png" alt="" ng-show="checkimg">
+									<input type="checkbox" ng-model="checkimg" class="check" data-orderid="{{rework.makeOrderId}}" />
+								</div>
+								<div style="overflow: hidden;height: .336rem;" ng-click="reworkPartShow($index, reworkParts[$index],rework.makeOrderId)">
+									<div class="order-coding fl">
+										<div class="code" style="text-align: left;" on-hold="thatContent($event,rework.itemCode)">{{rework.itemCode}}</div>
+										<div style="text-align: left;margin-left: 35px;" on-hold="thatContent($event,rework.makeOrderNum)">{{rework.makeOrderNum}}</div>
+									</div>
+									<div class="order-name fl">
+										<div on-hold="thatContent($event,orderOther.descriptions)">{{rework.descriptions}}</div>
+										<div>{{rework.customerName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{rework.specification}} </div>
+									</div>
+									<div class="order-model fl">
+										<div>{{rework.demandDate | limitTo:10}}</div>
+										<div>{{rework.material}} </div>
+									</div>
+									<div class="order-num fl">
+										<div style="width: 90%" class="completeQty">{{rework.moQty}}</div>
+										<div class="reworkNum"><input type="text" value="{{rework.completeQty}}" ng-click="relclick($event)"></div>
+									</div>
+								</div>
+							</div>
+							<!--返工部件-->
+							<div style="overflow: hidden" ng-show="reworkParts[$index]">
+								<div style="width:96%;height: 1px;background: #DADADA 100%;margin: 0 auto; "></div>
+								<div ng-repeat="item in reworkItems[$index]">
+									<div class="order-coding fl reworkPartId">
+										<div class="order-input">
+											<img src="build/img/no.png" alt="" ng-hide="check1">
+											<img src="build/img/yes.png" alt="" ng-show="check1">
+											<input type="checkbox" ng-model="check1" class="check" data-orderid="{{item.makeOrderId}}" data-partid="{{item.assemblyId}}"> {{item.assemblyItemDesc}}
+										</div>
+									</div>
+									<div class="order-name fl" style="width: 30%;">
+										<div>{{item.material}}</div>
+									</div>
+									<div class="order-model fl" style="width: 30%;">
+										<div>{{item.specification}}</div>
+									</div>
+									<div class="order-num fl" style="width: 15%;">
+										<div style="margin-top: 8px;width: 70%;" class="reworkPartNum"><input type="text" value="{{item.completeQty}}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ion-infinite-scroll ng-if="hasmorerework" on-infinite="loadReworkList()" distance="1%" immediate-check="false"></ion-infinite-scroll>
+				</div>
+			</ion-content>
+		</div>
+	</div>
+	<!--搜索页面-->
+	<div class="search-content" ng-show="opensearch">
+		<ion-header-bar style="background: rgba(250,250,250,0.90);box-shadow: 0 0 0 0 #E3E3E3;">
+			<a class="button icon-left ion-chevron-left button-clear button-dark" ng-click="goSearch()"></a>
+			<h1 class="title">搜索</h1>
+		</ion-header-bar>
+		<div class="search-inp">
+			<lable class="start-time time">
+				<span class="input-title">开始时间</span>
+				<ionic-datepicker idate="currentDate">
+					<i class="icon ion-date fl date"></i>
+				</ionic-datepicker>
+				<input type="text" placeholder="请输入开始时间" class="fl inp startDate" ng-model="searchCondition.startDate">
+			</lable>
+			<lable class="end-time time">
+				<span class="input-title">结束时间</span>
+				<ionic-datepicker idate="endTimeDate">
+					<i class="icon ion-date fl date"></i>
+				</ionic-datepicker>
+				<input type="text" placeholder="请输入结束时间" class="fl inp endDate" ng-model="searchCondition.endDate">
+			</lable>
+			<lable class="time order">
+				<span class="input-title">工单号</span>
+				<input type="text" placeholder="请填写工单号" class="fl inp" ng-model="searchCondition.orderNum">
+			</lable>
+			<lable class="time order">
+				<span class="input-title">项目名称</span>
+				<input type="text" placeholder="请填写项目名称" class="fl inp" ng-model="searchCondition.projectName">
+			</lable>
+			<lable class="time order">
+				<span class="input-title">产品编码</span>
+				<input type="text" placeholder="请填写产品编码" class="fl inp" ng-model="searchCondition.orderCode">
+			</lable>
+		</div>
+		<div class="btn-search" ng-click="searchBtn()">
+			<img src="build/img/search.png" alt="">
+			<span class="fl">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+		</div>
+	</div>
+
+</ion-view>

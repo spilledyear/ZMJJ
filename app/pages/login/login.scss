@@ -1,0 +1,82 @@
+html{
+  font-size:26.67vw;
+}
+.login{
+    width: 100%;
+    height: 100%;
+        .login-logo{
+            width: 100%;
+            height: 1.9rem;
+            overflow: hidden;
+            .logo-img{
+                width: 1rem;
+                height: 1.08rem;
+                margin: .34rem auto;
+            }
+        }
+    .form-input{
+      width: 100%;
+      overflow: hidden;
+        .inp-1{
+          width: 85.6%;
+          height: 70px;
+          margin: 0 auto;
+          margin-bottom: 30px;
+          position: relative;
+        }
+    }
+  .login-btn{
+    margin: .5rem auto 0;
+    width: 70%;
+    height: .4rem;
+    font-size: 26px;
+    line-height: .4rem;
+    text-align: center;
+    color: #fff;
+    background: #E2B660;
+    border-radius: 50px;
+  }
+}
+.form-input{
+  .inp-1{
+    input{
+      width: 100%;
+      height: 100%;
+      padding-left: 70px;
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      box-shadow: 0 2px 2px 0 rgba(234,234,234,0.30);
+      border-radius: 4px;
+      font-size: 20px;
+      color: #9B9B9B;
+      letter-spacing: 0;
+      line-height: 20px;
+
+    }
+    .inp-img{
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 17px;
+      left: 22px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .preservation{
+    margin: 0 auto;
+    width: 85.6%;
+    overflow: hidden;
+    font-size: 20px;
+    height: .17rem;
+    line-height: .17rem;
+  .toggle .track{
+    background-color: #e0e0e0;
+  }
+  }
+}
+
+
+
