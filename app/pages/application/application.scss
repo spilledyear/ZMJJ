@@ -1,23 +1,39 @@
+.title-div{
+  font-size: 18px;
+  text-align:center;
+  margin: 0.15rem auto;
+}
+.content-background{
+  width: 100%;
+  height: 1.5rem;
+  background: url("../img/Group.png") no-repeat;
+  background-size: 100%;
+}
 .coutent-function{
-  margin-left: .2rem;
+  margin-left: .15rem;
   margin-top: -.1rem;
 }
 .daily-work{
+  padding: 0 !important;
   margin-top: 10px;
-  width: .63rem;
-  height: .25rem;
+  width: 1.7rem;
+  height: .8rem;
   background-image: linear-gradient(-135deg, #DEAE59 0%, #F3D47B 100%);
   box-shadow: 0 2px 2px 0 rgba(234,234,234,0.50);
   border-radius: 3px;
-  font-size: 20px;
   line-height: .25rem;
+  font-size: 20px;
   color: #fff;
   img{
-    margin-left: .04rem;
-    margin-top: .06rem;
+    margin-left: .2rem;
+    margin-top: .2rem;
     margin-right: .08rem;
-    width: .14rem;
-    height: .14rem;
+    width: .4rem;
+    height: .4rem;
     float: left;
+  }
+  .report-span{
+    padding-top: .25rem;
+    font-size: 16px;
   }
 }

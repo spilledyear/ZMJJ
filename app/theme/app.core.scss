@@ -16,3 +16,23 @@
 
 @import "../lib/handLib/hmsDirective";
 
+
+@media only screen and (min-width: 300px) {
+   body{
+     font-size: 14px !important;
+   }
+}
+
+@media only screen and (min-width: 410px) {
+   body{
+     font-size: 16px !important;
+   }
+}
+
+
+@media only screen and (min-width: 641px) {
+   body{
+     font-size: 18px !important;
+   }
+}
+

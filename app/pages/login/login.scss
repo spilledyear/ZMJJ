@@ -1,6 +1,3 @@
-html{
-  font-size:26.67vw;
-}
 .login{
     width: 100%;
     height: 100%;
@@ -19,22 +16,22 @@ html{
       overflow: hidden;
         .inp-1{
           width: 85.6%;
-          height: 70px;
+          height: .5rem;
           margin: 0 auto;
           margin-bottom: 30px;
           position: relative;
         }
     }
   .login-btn{
-    margin: .5rem auto 0;
-    width: 70%;
-    height: .4rem;
-    font-size: 26px;
-    line-height: .4rem;
+    margin: .7rem auto 0;
+    width: 85.6%;
+    height: .45rem;
+    line-height: .45rem;
+    //font-size: 18px;
     text-align: center;
     color: #fff;
     background: #E2B660;
-    border-radius: 50px;
+    border-radius: .45rem;
   }
 }
 .form-input{
@@ -42,23 +39,22 @@ html{
     input{
       width: 100%;
       height: 100%;
-      padding-left: 70px;
+      padding-left: .54rem;
       background: #FFFFFF;
       border: 1px solid #EAEAEA;
       box-shadow: 0 2px 2px 0 rgba(234,234,234,0.30);
       border-radius: 4px;
-      font-size: 20px;
       color: #9B9B9B;
       letter-spacing: 0;
-      line-height: 20px;
+      font-size: 16px;
 
     }
     .inp-img{
-      width: 36px;
-      height: 36px;
+      width: .24rem;
+      height: .24rem;
       position: absolute;
-      top: 17px;
-      left: 22px;
+      top: .15rem;
+      left: .15rem;
       img{
         width: 100%;
         height: 100%;
@@ -69,12 +65,24 @@ html{
     margin: 0 auto;
     width: 85.6%;
     overflow: hidden;
-    font-size: 20px;
-    height: .17rem;
-    line-height: .17rem;
-  .toggle .track{
-    background-color: #e0e0e0;
-  }
+    height: .22rem;
+    line-height: .22rem;
+    font-size: 14px;
+    .input-left{
+      width: .14rem;
+      height: .14rem;
+    }
+    .input-left-span{
+      float: left;
+      margin-left: 15px !important;
+    }
+    .toggle .track{
+      background-color: #e0e0e0;
+      height: .20rem;
+      width: .38rem;
+      margin-top: 1px;
+      border: none;
+    }
   }
 }
 
