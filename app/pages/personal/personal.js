@@ -1,15 +1,15 @@
 /**
- * Created by qiaoliyang on 17/7/19.
+ * Created by xaioyong.luo on 17/10/19.
  */
-angular.module('myInfoModule')
+angular.module('personalModule')
 
-  .controller('myInfoCtrl', [
+  .controller('personalCtrl', [
     '$scope',
     '$state',
     '$ionicHistory',
     function ($scope,
               $state,
-             $ionicHistory) {
+              $ionicHistory) {
       $scope.goback = function () {
         $ionicHistory.goBack();
       };
@@ -17,14 +17,5 @@ angular.module('myInfoModule')
         $state.go("login",{}, {reload: true});
       };
 
-
-      /*console.log('myInfoCtrl.enter');
-
-       $scope.$on('$ionicView.enter', function (e) {
-       console.log('myInfoCtrl.$ionicView.enter');
-       });
-
-       $scope.$on('$destroy', function (e) {
-       console.log('myInfoCtrl.$destroy');
-       });*/
-    }]);
+    }
+  ]);

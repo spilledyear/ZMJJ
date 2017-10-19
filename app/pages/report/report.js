@@ -1,9 +1,9 @@
 /**
  * Created by qiaoliyang on 17/7/19.
  */
-angular.module('dailyworkModule')
+angular.module('reportModule')
 
-	.controller('dailyworkCtrl', [
+	.controller('reportCtrl', [
 		'$scope',
 		'zmjjhttp',
 		'baseConfig',

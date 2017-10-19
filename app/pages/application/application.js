@@ -16,7 +16,7 @@ angular.module('applicationModule')
               $stateParams) {
       console.log( $stateParams.userId);
       $scope.goDailywork = function () {
-        $state.go('menu.dailywork',{userId:$stateParams.userId},{reload: true});
+        $state.go('menu.report',{userId:$stateParams.userId},{reload: true});
       }
 
     }]);

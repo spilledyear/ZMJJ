@@ -6,22 +6,20 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var loginModule = angular.module('loginModule', []);
-var dailyworkModule = angular.module('dailyworkModule', []);
+var reportModule = angular.module('reportModule', []);
 var applicationModule = angular.module('applicationModule', []);
-var searchModule = angular.module('searchModule', []);
-var myInfoModule = angular.module('myInfoModule', []);
+var personalModule = angular.module('personalModule', []);
 var utilsModule = angular.module('utilsModule', []);
 var HmsModule = angular.module('HmsModule', []);
 
 var myApp = angular.module('myApp', [
   'ionic',
   'ngCordova',
-  'loginModule',
   'baseConfig',
+  'loginModule',
   'applicationModule',
-  'dailyworkModule',
-  'searchModule',
-  'myInfoModule',
+  'reportModule',
+  'personalModule',
   'utilModule',
   'hmsDirectives',
   'utilsModule',
@@ -94,12 +92,12 @@ angular.module('myApp')
           }
         })
 
-        .state('menu.dailywork', {
-          url: '/dailywork/:userId',
+        .state('menu.report', {
+          url: '/report/:userId',
           views: {
             'content': {
-              templateUrl: 'build/pages/dailywork/dailywork.html',
-              controller: 'dailyworkCtrl'
+              templateUrl: 'build/pages/report/report.html',
+              controller: 'reportCtrl'
             }
           }
         })
@@ -114,21 +112,15 @@ angular.module('myApp')
           }
         })
 
-        .state('menu.myInfo', {
-          url: '/myInfo',
+        .state('menu.personal', {
+          url: '/personal',
           views: {
             'content': {
-              templateUrl: 'build/pages/myInfo/myInfo.html',
-              controller: 'myInfoCtrl'
+              templateUrl: 'build/pages/personal/personal.html',
+              controller: 'personalCtrl'
             }
           }
         })
-
-       /* .state('guide', {
-          url: '/guide',
-          templateUrl: 'build/pages/guide/guide.html',
-          controller: 'guideCtrl'
-        })*/
 
         .state('login', {
           url: '/login',

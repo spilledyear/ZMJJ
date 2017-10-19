@@ -4,6 +4,6 @@
 angular.module('menu',[])
   .controller('menuController',[ '$scope','$state',function($scope, $state) {
     $scope.goMineCenter = function(){
-      $state.go('menu.myInfo')
+      $state.go('menu.personal')
     }
   }])
