@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 44px;
+    top: .45rem;
     background: #FAFAFA;
 }
 .daily-nav {
@@ -11,12 +11,12 @@
     display: flex;
     background: rgba(250,250,250,0.90);
     box-shadow: 0 0 0 0 #E3E3E3;
+    font-size: 14px;
     li {
         flex: 1;
-        font-size: 20px;
         flex-direction: row;
         color: #999;
-        line-height: 50px;
+        line-height: .5rem;
         text-align: center;
         position: relative;
         .border-bottom {
@@ -35,63 +35,61 @@
 }
 
 .daily-content {
-    font-size: 20px;
+    font-size: 12px;
     width: 100%;
     .has-header {
         top: 46px;
     }
     .search {
         width: 100%;
-        height: 50px;
+        height: .4rem;
         .search-left {
-            width: 25%;
+            width: 40%;
             select {
-                margin-left: 20%;
+                margin: .05rem 1% .05rem 15%;
+                height: .3rem;
                 background: #FAFAFA 90%;
                 border: none;
-                font-size: 16px;
+                font-size: 14px;
             }
         }
         .search-center {
-            width: 50%;
-            height: 50px;
+            height: .2rem;
+            margin: .05rem 0 .05rem 10%;
+            width: 40%;
             .search-order {
-                margin-top: 7px;
                 width: 100%;
-                height: 36px;
                 background: rgba(232,232,232,1);
                 border-radius: 12px;
                 input {
-                    width: 90%;
-                    background: url("../img/Mask.png") no-repeat 15px 9px;
-                    background-size: 18px 18px;
-                    text-indent: 43px;
-                    font-size: 16px;
+                    width: 95%;
+                    background: url("../img/Mask.png") no-repeat 12px 10px;
+                    background-size: 14px 14px;
+                    font-size: 14px;
                     color: #6F6F6F;
                     letter-spacing: 0;
-                    line-height: 16px;
                 }
             }
         }
         .search-right {
-            width: 25%;
-            height: 50px;
+            width: 100%;
+            height: .4rem;
             overflow: hidden;
             div {
-                margin-left: 10px;
-                font-size: 16px;
+                margin-left: 8%;
+                font-size: 14px;
                 color: #9C9C9C;
                 letter-spacing: -0.39px;
-                line-height: 50px;
+                line-height: .4rem;
             }
         }
     }
 }
-
 .search > div {
-    line-height: 50px;
+    line-height: .4rem;
     float: left;
 }
+
 
 .daily-order {
     width: 96%;
@@ -100,7 +98,7 @@
     /*box-shadow: 0 2px 2px 0 rgba(234,234,234,0.50);*/
     border-radius: 4px;
     overflow: hidden;
-    font-size: 18px;
+    font-size: 14px;
     .checkimg {
         position: relative;
         img {
@@ -109,19 +107,19 @@
             margin-top: 0.03rem;
             margin-left: 10px;
             margin-right: 10px;
-            width: 23px;
-            height: 23px;
+            width: 20px;
+            height: 20px;
         }
         .check {
-            width: 23px;
-            height: 23px;
+            width: 20px;
+            height: 20px;
             position: absolute;
             top: 0.03rem;
             left: 10px;
             opacity: 0;
         }
     }
- .order-coding > div {
+    .order-coding > div {
         height: 50%;
         line-height: 0.17rem;
         text-align: center;
@@ -163,7 +161,6 @@
             height: 50%;
             line-height: 0.17rem;
             text-align: center;
-            font-size: 18px;
             color: #2f2f2f;
             overflow: hidden;
         }
@@ -186,7 +183,6 @@
         input {
             width: 90%;
             height: 28px;
-            font-size: 18px;
             text-align: center;
             background: #FFFFFF;
             border: 1px solid #E1E1E1;
@@ -198,11 +194,11 @@
         height: 50%;
         line-height: 0.17rem;
         text-align: center;
-        font-size: 18px;
         color: #2f2f2f;
         overflow: hidden;
     }
 }
+
 .fl {
     float: left;
 }
@@ -216,6 +212,7 @@
     letter-spacing: -0.41px;
     line-height: 17px;
 }
+
 .search-content {
     position: fixed;
     z-index: 888;
@@ -225,63 +222,77 @@
     box-shadow: 0 1px 1px 0 rgba(234,234,234,0.50);
     margin-bottom: 10px;
     .search-inp {
-        margin-top: 60px;
+        margin-top: .6rem;
         width: 100%;
-        height: 0.8rem;
+        height: 2.4rem;
     }
     .time {
         float: left;
-        width: 50%;
-        height: 0.2rem;
-        border-bottom: 1px solid #d7d7d7;
-    }
-    .input-title {
-        margin-top: 0.045rem;
-        float: left;
-        display: table;
-        width: 0.55rem;
-        height: 0.11rem;
-        border-right: 1px solid #d7d7d7;
-        text-align: center;
-        line-height: 0.11rem;
-        font-size: 18px;
-        color: #2F2F2F;
-        letter-spacing: 0;
-    }
-    .date {
-        width: 0.11rem;
-        height: 0.11rem;
-        margin-left: 0.1rem;
-        margin-top: 10px;
-    }
-    .ion-date {
-        background: url("../img/Date.png") no-repeat center;
-        background-size: 0.11rem 0.11rem;
-    }
-    .time .inp {
-        margin-left: 15px;
-        width: 1rem;
-        height: 0.19rem;
-        line-height: 0.2rem;
-        font-size: 18px;
-        color: #C7C7C7;
-        letter-spacing: 0;
-
-    }
-    .order {
         width: 100%;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        border-bottom: 1px solid #d7d7d7;
+        font-size: 14px;
+        .time-div{
+            float: right;
+            width: 70%;
+            input{
+                float: left;
+                width: 85%;
+                height: 0.39rem;
+                line-height: 0.39rem;
+                font-size: 14px;
+                color: #C7C7C7;
+                letter-spacing: 0;
+                text-align: center;
+            }
+            .date-i {
+                width: 15%;
+                height: .4rem;
+                float: right;
+            }
+            .date-icon{
+                background: url("../img/Date.png") no-repeat center;
+                background-size: 0.15rem 0.15rem;
+            }
+        }
+        .time-input{
+            float:right;
+            margin-right: .10rem;
+            width: 74%;
+            height: 0.39rem;
+            line-height: 0.39rem;
+            font-size: 14px;
+            color: #C7C7C7;
+            letter-spacing: 0;
+            text-align: center;
+        }
+        ::-webkit-input-placeholder{
+            text-align: right;
+        }
+        .input-title {
+            float: left;
+            display: table;
+            width: 20%;
+            border-right: 0px solid #d7d7d7;
+            text-align: center;
+            font-size: 14px;
+            color: #2F2F2F;
+            letter-spacing: 0;
+        }
     }
+
     .btn-search {
-        width: 1.28rem;
+        width: 2.8rem;
         height: 40px;
+        line-height: 40px;
         margin: 20px auto;
         background: #E2B660;
         border-radius: 20px;
         text-align: center;
-        font-size: 18px;
+        font-size: 14px;
         color: #FFFFFF;
         letter-spacing: -0.19px;
-        line-height: 40px;
         img {
             width: 20px;
             height: 20px;
@@ -292,6 +303,7 @@
         }
     }
 }
+
 .popup-container .popup{
     width: 500px;
 }
